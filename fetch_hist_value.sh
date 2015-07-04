@@ -12,7 +12,9 @@ mkdir -p $OUTPUT_DIR
 for ID in $ID_LIST 
 do
 	echo "Processing fund: $ID"
+	touch $OUTPUT_DIR/$ID.txt
 	curl -s "http://vip.fundxy.com/fundxy/Curve/ClientCurveService.asmx/GetCurveDayVar?FundID=${ID}&CurveType=1&Width=540&Height=320&StartDate=${START}&EndDate=${TODAY}" > $OUTPUT_DIR/$ID.txt
 done
 
+echo $TODAY > $OUTPUT_DIR/last
 echo "See more in ${OUTPUT_DIR}"
